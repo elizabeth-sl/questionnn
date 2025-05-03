@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Just a quick question</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fce4ec;
+    }
+
+    .card {
+      background-color: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .question {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #d81b60;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .yes {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #45a045;
+    }
+
+    .no {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .no:hover {
+      background-color: #d73833;
+    }
+
+    /* Modal styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      white-space: pre-line;
+    }
+
+    .close-btn {
+      padding: 8px 16px;
+      background-color: #d81b60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background-color: #ad1457;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="question">Do you love me?</div>
+    <div class="buttons">
+      <button class="yes" onclick="openModal('yes')">Yes</button>
+      <button class="no" onclick="openModal('no')">No</button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="popupModal">
+    <div class="modal-content">
+      <p id="popupText"></p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(answer) {
+      const modal = document.getElementById("popupModal");
+      const text = document.getElementById("popupText");
+
+      if (answer === 'yes') {
+        text.textContent = `My love,
+
+From the moment I met you, I knew that you were someone special. These past few months have been an incredible journey, and I've discovered so much about myself and about love. Every moment we've shared, every conversation, every laugh, and every quiet moment together has left an indelible mark on my heart.
+
+You've brought light into my life in ways I never thought possible. Your kindness, your compassion, and your beauty shine brightly, and I'm so grateful to have you in my world. Your presence makes me feel seen, heard, and understood in a way that few others have.
+
+I've loved watching you grow and evolve, pursuing your passions and interests with such dedication and enthusiasm. Your strength and resilience inspire me daily, and I'm constantly amazed by your generosity and empathy towards others.
+
+As I reflect on our time together, I'm filled with gratitude for the memories we've created. From spontaneous adventures to quiet nights in, every moment with you has been a gift. Your smile brightens up my day, and your laughter is music to my ears.
+
+I want you to know that I'm all in. I'm committed to loving you with every fiber of my being, through the ups and downs, the triumphs and the struggles. I promise to support you, to listen to you, and to be there for you whenever you need me.
+
+If there's one thing I've learned from knowing you, it's that love is worth fighting for. And I'm willing to fight for us, for our love, and for our future together.
+
+With all my love,`;
+      } else {
+        text.textContent = "oh";
+      }
+
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("popupModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("popupModal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
